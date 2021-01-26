@@ -1,0 +1,27 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: GitRepository
+metadata:
+  name: doom-system
+  namespace: doom-system
+spec:
+  interval: 1m0s
+  ref:
+    branch: main
+  secretRef:
+    name: doom-system
+  url: ssh://git@github.com/hiddeco/test-fleet-1234
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
+kind: Kustomization
+metadata:
+  name: doom-system
+  namespace: doom-system
+spec:
+  interval: 10m0s
+  path: ./clusters/my-cluster
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: doom-system
+  validation: client
