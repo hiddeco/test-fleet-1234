@@ -10,7 +10,7 @@ spec:
     branch: main
   secretRef:
     name: flux-system
-  url: ""
+  url: ssh://git@github.com/hiddeco/test-fleet-1234
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
 kind: Kustomization
